@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.zozo07.book">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                //entry point
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--
+             Első lépés az új osztály, második a Manifest módosítása
+             2 intent filter van, emiatt kétféle képpen lehet ezt a programot meghívni. View / MyBrowserActivity
+             A Default azért kell hogy más programok meg tudják a hívni az én programomat.
+            -->
+        <activity
+            android:name=".MyBrowserActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />    <!-- View miatt lehet kiválasztani hogy mivel nyissam meg.-->
+                <category android:name="android.intent.category.BROWSABLE" />       <!--ez kell hogy tudja a forító hogy ez böngészhető. -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="http" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.example.zozo07.book.MyBrowserActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="http" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+
+
+
+
+
+
+
